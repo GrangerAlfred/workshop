@@ -69,6 +69,18 @@ Page({
     })
   },
 
+  goPurchase() {
+    wx.navigateTo({
+      url: '../purchase-edit/index'
+    })
+  },
+
+  goTransactions() {
+    wx.navigateTo({
+      url: '../inventory-transactions/index'
+    })
+  },
+
   goEdit(e) {
     wx.navigateTo({
       url: `../bisque-edit/index?id=${e.currentTarget.dataset.id}`

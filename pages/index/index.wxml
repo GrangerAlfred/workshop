@@ -12,6 +12,10 @@
 
   <view class="stats-grid">
     <view class="stat-cell">
+      <text class="stat-value">{{stats.orderCount}}</text>
+      <text class="stat-label">订单数量</text>
+    </view>
+    <view class="stat-cell">
       <text class="stat-value">{{stats.customerCount}}</text>
       <text class="stat-label">客户档案</text>
     </view>
@@ -31,6 +35,13 @@
 
   <view class="section-title">常用入口</view>
   <view class="actions">
+    <view class="action-card" bindtap="goOrders">
+      <view class="action-main">
+        <text class="action-title">订单管理</text>
+        <text class="action-desc">创建订单、交期、收款状态</text>
+      </view>
+      <text class="action-arrow">›</text>
+    </view>
     <view class="action-card" bindtap="goCustomers">
       <view class="action-main">
         <text class="action-title">客户管理</text>

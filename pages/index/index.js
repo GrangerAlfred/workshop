@@ -1,5 +1,6 @@
 const { listCustomers } = require('../../services/customers')
 const { listBisqueItems } = require('../../services/inventory')
+const { listOrders } = require('../../services/orders')
 const { formatMoneyWithSymbol } = require('../../utils/money')
 
 Page({
@@ -7,6 +8,7 @@ Page({
     loading: false,
     errorMessage: '',
     stats: {
+      orderCount: 0,
       customerCount: 0,
       bisqueCount: 0,
       lowStockCount: 0,
@@ -25,15 +27,17 @@ Page({
     })
 
     Promise.all([
+      listOrders(),
       listCustomers(),
       listBisqueItems()
     ])
-      .then(([customers, bisqueItems]) => {
+      .then(([orders, customers, bisqueItems]) => {
         const unpaidAmount = customers.reduce((sum, item) => sum + Number(item.unpaidAmount || 0), 0)
         const lowStockCount = bisqueItems.filter((item) => item.stockStatus !== '正常').length
 
         this.setData({
           stats: {
+            orderCount: orders.length,
             customerCount: customers.length,
             bisqueCount: bisqueItems.length,
             lowStockCount,
@@ -56,6 +60,12 @@ Page({
   goCustomers() {
     wx.navigateTo({
       url: '../customers/index'
+    })
+  },
+
+  goOrders() {
+    wx.navigateTo({
+      url: '../orders/index'
     })
   },
 

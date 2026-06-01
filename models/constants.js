@@ -145,6 +145,24 @@ const LEDGER_DIRECTION = {
   EXPENSE: 'expense'
 }
 
+const LEDGER_CATEGORY = {
+  ORDER_PAYMENT: 'order_payment',
+  BISQUE_PURCHASE: 'bisque_purchase',
+  WAGE: 'wage',
+  FIRING: 'firing',
+  PACKAGE: 'package',
+  LOGISTICS: 'logistics',
+  RENT: 'rent',
+  REPAIR: 'repair',
+  OTHER: 'other'
+}
+
+const PURCHASE_STATUS = {
+  DRAFT: 'draft',
+  COMPLETED: 'completed',
+  CANCELLED: 'cancelled'
+}
+
 const INVENTORY_TRANSACTION_TYPE = {
   PURCHASE_IN: 'purchase_in',
   ORDER_OUT: 'order_out',
@@ -152,6 +170,15 @@ const INVENTORY_TRANSACTION_TYPE = {
   ADJUST_IN: 'adjust_in',
   ADJUST_OUT: 'adjust_out',
   RETURN_IN: 'return_in'
+}
+
+const INVENTORY_TRANSACTION_TYPE_TEXT = {
+  [INVENTORY_TRANSACTION_TYPE.PURCHASE_IN]: '采购入库',
+  [INVENTORY_TRANSACTION_TYPE.ORDER_OUT]: '订单出库',
+  [INVENTORY_TRANSACTION_TYPE.DAMAGE_OUT]: '破损报损',
+  [INVENTORY_TRANSACTION_TYPE.ADJUST_IN]: '盘点调增',
+  [INVENTORY_TRANSACTION_TYPE.ADJUST_OUT]: '盘点调减',
+  [INVENTORY_TRANSACTION_TYPE.RETURN_IN]: '退货入库'
 }
 
 module.exports = {
@@ -173,5 +200,8 @@ module.exports = {
   PAYMENT_METHOD,
   PAYMENT_METHOD_TEXT,
   LEDGER_DIRECTION,
-  INVENTORY_TRANSACTION_TYPE
+  LEDGER_CATEGORY,
+  PURCHASE_STATUS,
+  INVENTORY_TRANSACTION_TYPE,
+  INVENTORY_TRANSACTION_TYPE_TEXT
 }

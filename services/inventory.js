@@ -81,6 +81,24 @@ function listBisqueItems(keyword = '') {
       })))
 }
 
+function listInventoryTransactions(itemId = '') {
+  const db = getDb()
+  const query = {
+    itemType: 'bisque'
+  }
+
+  if (itemId) {
+    query.itemId = itemId
+  }
+
+  return db.collection(COLLECTIONS.INVENTORY_TRANSACTIONS)
+    .where(query)
+    .orderBy('createdAt', 'desc')
+    .limit(100)
+    .get()
+    .then((res) => res.data.filter((item) => item.deleted !== true))
+}
+
 function getBisqueItem(id) {
   return getDb().collection(COLLECTIONS.BISQUE_ITEMS).doc(id).get()
     .then((res) => Object.assign({}, res.data, {
@@ -131,6 +149,7 @@ function deleteBisqueItem(id) {
 
 module.exports = {
   listBisqueItems,
+  listInventoryTransactions,
   getBisqueItem,
   saveBisqueItem,
   deleteBisqueItem

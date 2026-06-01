@@ -1,0 +1,67 @@
+<scroll-view class="page" scroll-y>
+  <view class="page-head">
+    <view>
+      <view class="page-title">订单管理</view>
+      <view class="page-subtitle">先把订单、交期和收款状态集中看清楚</view>
+    </view>
+    <view class="create-button" bindtap="goCreate">新增订单</view>
+  </view>
+
+  <view class="summary">
+    <view class="summary-item">
+      <text class="summary-value">{{summary.total}}</text>
+      <text class="summary-label">订单数</text>
+    </view>
+    <view class="summary-item">
+      <text class="summary-value">{{summary.activeCount}}</text>
+      <text class="summary-label">进行中</text>
+    </view>
+    <view class="summary-item wide">
+      <text class="summary-value money">{{summary.unpaidAmountText}}</text>
+      <text class="summary-label">未收款</text>
+    </view>
+  </view>
+
+  <view class="toolbar">
+    <input
+      class="search-input"
+      placeholder="搜索订单号、客户、产品"
+      value="{{keyword}}"
+      bindinput="onSearchInput"
+      bindconfirm="onSearchConfirm"
+      confirm-type="search"
+    />
+    <view class="search-button" bindtap="onSearchConfirm">搜索</view>
+  </view>
+
+  <view class="filters">
+    <picker class="filter-picker" range="{{statusOptions}}" value="{{statusIndex}}" bindchange="onStatusChange">
+      <view class="filter-value">{{statusOptions[statusIndex]}}</view>
+    </picker>
+    <picker class="filter-picker" range="{{paymentStatusOptions}}" value="{{paymentStatusIndex}}" bindchange="onPaymentStatusChange">
+      <view class="filter-value">{{paymentStatusOptions[paymentStatusIndex]}}</view>
+    </picker>
+  </view>
+
+  <view wx:if="{{errorMessage}}" class="notice error">{{errorMessage}}</view>
+  <view wx:elif="{{loading}}" class="empty">加载中...</view>
+  <view wx:elif="{{orders.length === 0}}" class="empty">暂无订单</view>
+
+  <view wx:else class="list">
+    <view wx:for="{{orders}}" wx:key="_id" class="order-card">
+      <view class="card-head">
+        <view class="title-wrap">
+          <text class="order-no">{{item.orderNo}}</text>
+          <text class="name">{{item.title}}</text>
+        </view>
+        <text class="tag">{{item.statusText}}</text>
+      </view>
+      <view class="detail-line">{{item.customerName}} · {{item.quantity}} 件 · 交货 {{item.deliveryDateText || '未填写'}}</view>
+      <view class="detail-line muted">下单 {{item.orderDateText}} · {{item.paymentStatusText}}</view>
+      <view class="card-foot">
+        <text class="amount">{{item.totalAmountText}}</text>
+        <text class="unpaid">未收 {{item.unpaidAmountText}}</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>

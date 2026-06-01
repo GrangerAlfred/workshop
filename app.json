@@ -1,9 +1,13 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/orders/index",
+    "pages/order-edit/index",
     "pages/customers/index",
     "pages/customer-edit/index",
     "pages/inventory/index",
+    "pages/purchase-edit/index",
+    "pages/inventory-transactions/index",
     "pages/bisque-edit/index",
     "pages/profile/index",
     "pages/logs/logs"

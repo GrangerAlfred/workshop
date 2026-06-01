@@ -1,0 +1,111 @@
+page {
+  min-height: 100vh;
+  background: #f4f6f8;
+}
+
+.page {
+  height: 100vh;
+  padding: 28rpx;
+  box-sizing: border-box;
+}
+
+.page-head {
+  padding: 12rpx 0 24rpx;
+}
+
+.page-title {
+  color: #172033;
+  font-size: 40rpx;
+  font-weight: 700;
+  line-height: 52rpx;
+}
+
+.page-subtitle {
+  margin-top: 8rpx;
+  color: #667085;
+  font-size: 25rpx;
+}
+
+.filter-tip,
+.notice,
+.empty {
+  margin-bottom: 20rpx;
+  padding: 24rpx;
+  background: #ffffff;
+  border-radius: 8rpx;
+  color: #667085;
+  font-size: 27rpx;
+}
+
+.notice.error {
+  color: #a8071a;
+  background: #fff1f0;
+}
+
+.empty {
+  text-align: center;
+}
+
+.list {
+  padding-bottom: 40rpx;
+}
+
+.transaction-card {
+  margin-bottom: 18rpx;
+  padding: 24rpx;
+  border-radius: 8rpx;
+  background: #ffffff;
+  box-shadow: 0 4rpx 18rpx rgba(31, 41, 55, 0.05);
+}
+
+.card-head,
+.detail-row,
+.foot-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.name {
+  display: block;
+  color: #172033;
+  font-size: 32rpx;
+  font-weight: 700;
+  line-height: 42rpx;
+}
+
+.meta {
+  display: block;
+  margin-top: 6rpx;
+  color: #667085;
+  font-size: 24rpx;
+}
+
+.quantity {
+  flex-shrink: 0;
+  margin-left: 20rpx;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+.quantity.in {
+  color: #1b7f3a;
+}
+
+.quantity.out {
+  color: #b42318;
+}
+
+.detail-row {
+  margin-top: 20rpx;
+  color: #344054;
+  font-size: 26rpx;
+}
+
+.foot-row {
+  margin-top: 18rpx;
+  padding-top: 18rpx;
+  border-top: 1rpx solid #eef1f4;
+  color: #98a2b3;
+  font-size: 24rpx;
+}

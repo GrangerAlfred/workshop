@@ -1,0 +1,65 @@
+<scroll-view class="page" scroll-y>
+  <view class="page-head">
+    <view class="page-title">创建订单</view>
+    <view class="page-subtitle">先把客户、产品、交期和素胚占用记录清楚</view>
+  </view>
+
+  <view class="form-card">
+    <view class="field picker-field">
+      <text class="label">客户</text>
+      <view class="picker-wrap">
+        <customer-picker value="{{form.customerId}}" bind:change="onCustomerChange" />
+      </view>
+    </view>
+    <view class="field">
+      <text class="label">产品名称</text>
+      <input class="input" value="{{form.title}}" data-field="title" bindinput="onFieldInput" placeholder="杯子 / 盘子 / 花瓶" />
+    </view>
+    <view class="field">
+      <text class="label">订单数量</text>
+      <input class="input" value="{{form.quantity}}" data-field="quantity" bindinput="onFieldInput" type="digit" />
+    </view>
+    <view class="field">
+      <text class="label">销售单价</text>
+      <input class="input" value="{{form.unitPriceYuan}}" data-field="unitPriceYuan" bindinput="onFieldInput" type="digit" placeholder="元 / 件" />
+    </view>
+    <view class="field">
+      <text class="label">下单日期</text>
+      <picker mode="date" value="{{form.orderDateText}}" bindchange="onOrderDateChange">
+        <view class="picker-value">{{form.orderDateText}}</view>
+      </picker>
+    </view>
+    <view class="field">
+      <text class="label">交货日期</text>
+      <picker mode="date" value="{{form.deliveryDateText}}" bindchange="onDeliveryDateChange">
+        <view class="picker-value">{{form.deliveryDateText}}</view>
+      </picker>
+    </view>
+  </view>
+
+  <view class="form-card">
+    <view class="field picker-field">
+      <text class="label">使用素胚</text>
+      <view class="picker-wrap">
+        <bisque-picker value="{{form.bisqueItemId}}" bind:change="onBisqueChange" />
+      </view>
+    </view>
+    <view class="field">
+      <text class="label">使用数量</text>
+      <input class="input" value="{{form.bisqueQuantity}}" data-field="bisqueQuantity" bindinput="onFieldInput" type="digit" />
+    </view>
+    <view wx:if="{{stockHint}}" class="hint">{{stockHint}}</view>
+    <view class="field textarea-field">
+      <text class="label">备注</text>
+      <textarea class="textarea" value="{{form.note}}" data-field="note" bindinput="onFieldInput" placeholder="图案、釉色、包装要求" />
+    </view>
+  </view>
+
+  <view class="summary-card">
+    <view>
+      <text class="summary-label">订单金额</text>
+      <text class="summary-value">{{totalAmountText}}</text>
+    </view>
+    <button class="save-button" loading="{{saving}}" bindtap="save">创建订单</button>
+  </view>
+</scroll-view>

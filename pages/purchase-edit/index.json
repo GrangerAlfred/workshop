@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "采购入库",
+  "usingComponents": {
+    "bisque-picker": "/components/bisque-picker/index"
+  }
+}

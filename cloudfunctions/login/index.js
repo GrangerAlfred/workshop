@@ -9,7 +9,13 @@ const USERS_COLLECTION = 'users'
 const BASE_COLLECTIONS = [
   USERS_COLLECTION,
   'customers',
-  'bisque_items'
+  'bisque_items',
+  'purchase_orders',
+  'purchase_order_items',
+  'inventory_transactions',
+  'ledger_entries',
+  'orders',
+  'order_bisque_usages'
 ]
 
 function success(data) {

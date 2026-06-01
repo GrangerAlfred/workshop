@@ -1,0 +1,31 @@
+<scroll-view class="page" scroll-y>
+  <view class="page-head">
+    <view class="page-title">库存流水</view>
+    <view class="page-subtitle">采购入库、订单出库和报损都会在这里追踪</view>
+  </view>
+
+  <view wx:if="{{purchaseNo}}" class="filter-tip">当前采购单：{{purchaseNo}}</view>
+  <view wx:if="{{errorMessage}}" class="notice error">{{errorMessage}}</view>
+  <view wx:elif="{{loading}}" class="empty">加载中...</view>
+  <view wx:elif="{{transactions.length === 0}}" class="empty">暂无库存流水</view>
+
+  <view wx:else class="list">
+    <view wx:for="{{transactions}}" wx:key="_id" class="transaction-card">
+      <view class="card-head">
+        <view>
+          <text class="name">{{item.itemName}}</text>
+          <text class="meta">{{item.typeText}} · {{item.createdAtText}}</text>
+        </view>
+        <text class="quantity {{item.quantityChange > 0 ? 'in' : 'out'}}">{{item.quantityText}}</text>
+      </view>
+      <view class="detail-row">
+        <text>库存后 {{item.stockAfter}}</text>
+        <text>成本 {{item.unitCostText}}</text>
+      </view>
+      <view class="foot-row">
+        <text>{{item.relatedNo || item.relatedType}}</text>
+        <text>{{item.note || '无备注'}}</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>

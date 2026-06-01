@@ -1,0 +1,55 @@
+<scroll-view class="page" scroll-y>
+  <view class="page-head">
+    <view class="page-title">采购入库</view>
+    <view class="page-subtitle">记录采购、入库数量和破损情况</view>
+  </view>
+
+  <view class="form-card">
+    <view class="field">
+      <text class="label">供应商</text>
+      <input class="input" value="{{form.supplierName}}" data-field="supplierName" bindinput="onFieldInput" placeholder="市场 / 店铺 / 供货人" />
+    </view>
+    <view class="field">
+      <text class="label">采购日期</text>
+      <picker mode="date" value="{{form.purchaseDateText}}" bindchange="onDateChange">
+        <view class="picker-value">{{form.purchaseDateText}}</view>
+      </picker>
+    </view>
+    <view class="field picker-field">
+      <text class="label">素胚</text>
+      <view class="picker-wrap">
+        <bisque-picker value="{{form.bisqueItemId}}" bind:change="onBisqueChange" />
+      </view>
+    </view>
+    <view class="field">
+      <text class="label">采购数量</text>
+      <input class="input" value="{{form.quantity}}" data-field="quantity" bindinput="onFieldInput" type="digit" placeholder="实际购买数量" />
+    </view>
+    <view class="field">
+      <text class="label">破损数量</text>
+      <input class="input" value="{{form.brokenQuantity}}" data-field="brokenQuantity" bindinput="onFieldInput" type="digit" />
+    </view>
+    <view class="field">
+      <text class="label">采购单价</text>
+      <input class="input" value="{{form.unitPriceYuan}}" data-field="unitPriceYuan" bindinput="onFieldInput" type="digit" placeholder="元 / 个" />
+    </view>
+    <view class="field">
+      <text class="label">支付方式</text>
+      <picker range="{{paymentMethodOptions}}" value="{{paymentMethodIndex}}" bindchange="onPaymentMethodChange">
+        <view class="picker-value">{{paymentMethodOptions[paymentMethodIndex]}}</view>
+      </picker>
+    </view>
+    <view class="field textarea-field">
+      <text class="label">备注</text>
+      <textarea class="textarea" value="{{form.note}}" data-field="note" bindinput="onFieldInput" placeholder="批次、质量、票据说明" />
+    </view>
+  </view>
+
+  <view class="summary-card">
+    <view>
+      <text class="summary-label">采购支出</text>
+      <text class="summary-value">{{totalAmountText}}</text>
+    </view>
+    <button class="save-button" loading="{{saving}}" bindtap="save">确认入库</button>
+  </view>
+</scroll-view>

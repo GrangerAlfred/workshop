@@ -4,7 +4,12 @@
       <view class="page-title">素胚库存</view>
       <view class="page-subtitle">规格、库存和成本先记清楚</view>
     </view>
-    <button class="primary-button" bindtap="goCreate">新增</button>
+  </view>
+
+  <view class="quick-actions">
+    <view class="quick-action primary" bindtap="goPurchase">采购入库</view>
+    <view class="quick-action" bindtap="goCreate">新增素胚</view>
+    <view class="quick-action" bindtap="goTransactions">库存流水</view>
   </view>
 
   <view class="summary">
@@ -31,7 +36,7 @@
       bindconfirm="onSearchConfirm"
       confirm-type="search"
     />
-    <button class="search-button" loading="{{loading}}" bindtap="onSearchConfirm">搜索</button>
+    <view class="search-button" bindtap="onSearchConfirm">搜索</view>
   </view>
 
   <view wx:if="{{errorMessage}}" class="notice error">{{errorMessage}}</view>

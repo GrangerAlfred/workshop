@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "创建订单",
+  "usingComponents": {
+    "customer-picker": "/components/customer-picker/index",
+    "bisque-picker": "/components/bisque-picker/index"
+  }
+}
