@@ -1,0 +1,112 @@
+page {
+  min-height: 100vh;
+  background: #f6f7f8;
+}
+
+.profile-page {
+  padding: 32rpx;
+  box-sizing: border-box;
+}
+
+.profile-header,
+.info-list {
+  background: #ffffff;
+  border-radius: 8rpx;
+  padding: 32rpx;
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-button {
+  width: 128rpx;
+  height: 128rpx;
+  padding: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: transparent;
+}
+
+.avatar-button::after {
+  border: 0;
+}
+
+.avatar {
+  display: block;
+  width: 128rpx;
+  height: 128rpx;
+}
+
+.nickname-input {
+  width: 100%;
+  height: 88rpx;
+  margin-top: 32rpx;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+  border: 1rpx solid #dcdfe6;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+  text-align: center;
+}
+
+.login-button {
+  width: 100%;
+  margin-top: 24rpx;
+  font-size: 30rpx;
+}
+
+.notice {
+  margin-top: 24rpx;
+  padding: 24rpx;
+  border-radius: 8rpx;
+  background: #fff7e6;
+  color: #8a5a00;
+  font-size: 28rpx;
+}
+
+.notice.error {
+  background: #fff1f0;
+  color: #a8071a;
+}
+
+.info-list {
+  margin-top: 24rpx;
+}
+
+.info-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  min-height: 80rpx;
+  border-bottom: 1rpx solid #edf0f2;
+  font-size: 28rpx;
+}
+
+.info-row:last-child {
+  border-bottom: 0;
+}
+
+.label {
+  flex: 0 0 180rpx;
+  color: #6b7280;
+  line-height: 80rpx;
+}
+
+.value {
+  flex: 1;
+  color: #1f2937;
+  line-height: 80rpx;
+  text-align: right;
+}
+
+.openid-row {
+  padding: 20rpx 0;
+}
+
+.openid {
+  line-height: 40rpx;
+  word-break: break-all;
+}

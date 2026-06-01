@@ -29,6 +29,12 @@ page {
   margin-top: 200px;
 }
 
+.profile-button {
+  margin-top: 32px;
+  width: 160rpx;
+  font-size: 28rpx;
+}
+
 .avatar-wrapper {
   padding: 0;
   width: 56px !important;

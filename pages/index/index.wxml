@@ -23,5 +23,6 @@
     <view class="usermotto">
       <text class="user-motto">{{motto}}</text>
     </view>
+    <button class="profile-button" bindtap="goProfile">账号</button>
   </view>
 </scroll-view>

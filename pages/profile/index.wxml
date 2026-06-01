@@ -1,0 +1,49 @@
+<view class="profile-page">
+  <view class="profile-header">
+    <button class="avatar-button" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+      <image class="avatar" src="{{profile.avatarUrl}}"></image>
+    </button>
+    <input
+      wx:if="{{canIUseNicknameComp}}"
+      type="nickname"
+      class="nickname-input"
+      placeholder="微信昵称"
+      value="{{profile.nickName}}"
+      bind:change="onInputChange"
+    />
+    <input
+      wx:else
+      class="nickname-input"
+      placeholder="昵称"
+      value="{{profile.nickName}}"
+      bindinput="onInputChange"
+    />
+    <button class="login-button" loading="{{loading}}" bindtap="refreshLogin">登录 / 刷新</button>
+  </view>
+
+  <view wx:if="{{errorMessage}}" class="notice error">{{errorMessage}}</view>
+  <view wx:elif="{{user && !user.enabled}}" class="notice">当前账号尚未启用，请让管理员在 users 集合中启用。</view>
+
+  <view wx:if="{{user}}" class="info-list">
+    <view class="info-row">
+      <text class="label">角色</text>
+      <text class="value">{{roleText}}</text>
+    </view>
+    <view class="info-row">
+      <text class="label">状态</text>
+      <text class="value">{{enabledText}}</text>
+    </view>
+    <view class="info-row">
+      <text class="label">权限</text>
+      <text class="value">{{canManage ? '可管理' : '不可管理'}}</text>
+    </view>
+    <view class="info-row">
+      <text class="label">最近登录</text>
+      <text class="value">{{lastLoginText}}</text>
+    </view>
+    <view class="info-row openid-row">
+      <text class="label">OpenID</text>
+      <text class="value openid">{{auth.openid}}</text>
+    </view>
+  </view>
+</view>
