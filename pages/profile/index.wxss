@@ -21,23 +21,40 @@ page {
   align-items: center;
 }
 
-.avatar-button {
-  width: 128rpx;
-  height: 128rpx;
-  padding: 0;
+.avatar-wrap {
+  position: relative;
+  width: 144rpx;
+  height: 144rpx;
   border-radius: 50%;
   overflow: hidden;
-  background: transparent;
+  background: #eef1f5;
+}
+
+.avatar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 144rpx;
+  height: 144rpx;
+  border-radius: 50%;
+}
+
+.avatar-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 144rpx;
+  height: 144rpx;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  line-height: 1;
+  border-radius: 50%;
 }
 
 .avatar-button::after {
   border: 0;
-}
-
-.avatar {
-  display: block;
-  width: 128rpx;
-  height: 128rpx;
 }
 
 .nickname-input {

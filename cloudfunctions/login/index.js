@@ -6,6 +6,11 @@ cloud.init({
 
 const db = cloud.database()
 const USERS_COLLECTION = 'users'
+const BASE_COLLECTIONS = [
+  USERS_COLLECTION,
+  'customers',
+  'bisque_items'
+]
 
 function success(data) {
   return {
@@ -31,15 +36,21 @@ function isCollectionNotFound(error) {
   )
 }
 
-async function ensureUsersCollection() {
+async function ensureCollection(collectionName) {
   try {
-    await db.collection(USERS_COLLECTION).limit(1).get()
+    await db.collection(collectionName).limit(1).get()
   } catch (error) {
     if (!isCollectionNotFound(error)) {
       throw error
     }
 
-    await db.createCollection(USERS_COLLECTION)
+    await db.createCollection(collectionName)
+  }
+}
+
+async function ensureBaseCollections() {
+  for (let i = 0; i < BASE_COLLECTIONS.length; i += 1) {
+    await ensureCollection(BASE_COLLECTIONS[i])
   }
 }
 
@@ -61,7 +72,7 @@ exports.main = async (event = {}) => {
   }
 
   try {
-    await ensureUsersCollection()
+    await ensureBaseCollections()
 
     const now = Date.now()
     const users = db.collection(USERS_COLLECTION)

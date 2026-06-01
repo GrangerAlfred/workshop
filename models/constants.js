@@ -30,6 +30,20 @@ const USER_ROLE_TEXT = {
   [USER_ROLE.WORKER]: '工人'
 }
 
+const CUSTOMER_TYPE = {
+  RETAIL: 'retail',
+  WHOLESALE: 'wholesale',
+  REGULAR: 'regular',
+  TEMPORARY: 'temporary'
+}
+
+const CUSTOMER_TYPE_TEXT = {
+  [CUSTOMER_TYPE.RETAIL]: '零售',
+  [CUSTOMER_TYPE.WHOLESALE]: '批发',
+  [CUSTOMER_TYPE.REGULAR]: '长期客户',
+  [CUSTOMER_TYPE.TEMPORARY]: '临时客户'
+}
+
 const ORDER_STATUS = {
   PENDING: 'pending',
   PROCESSING: 'processing',
@@ -144,6 +158,8 @@ module.exports = {
   COLLECTIONS,
   USER_ROLE,
   USER_ROLE_TEXT,
+  CUSTOMER_TYPE,
+  CUSTOMER_TYPE_TEXT,
   ORDER_STATUS,
   ORDER_STATUS_TEXT,
   PAYMENT_STATUS,

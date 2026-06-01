@@ -1,0 +1,10 @@
+<picker
+  range="{{names}}"
+  value="{{selectedIndex}}"
+  disabled="{{disabled}}"
+  bindchange="onChange"
+>
+  <view class="picker">
+    <text class="{{displayText ? 'value' : 'placeholder'}}">{{displayText || placeholder}}</text>
+  </view>
+</picker>

@@ -1,0 +1,65 @@
+<scroll-view class="page" scroll-y>
+  <view class="page-head">
+    <view>
+      <view class="page-title">素胚库存</view>
+      <view class="page-subtitle">规格、库存和成本先记清楚</view>
+    </view>
+    <button class="primary-button" bindtap="goCreate">新增</button>
+  </view>
+
+  <view class="summary">
+    <view class="summary-item">
+      <text class="summary-value">{{summary.total}}</text>
+      <text class="summary-label">素胚种类</text>
+    </view>
+    <view class="summary-item">
+      <text class="summary-value">{{summary.totalStock}}</text>
+      <text class="summary-label">库存合计</text>
+    </view>
+    <view class="summary-item">
+      <text class="summary-value alert">{{summary.lowStockCount}}</text>
+      <text class="summary-label">库存提醒</text>
+    </view>
+  </view>
+
+  <view class="toolbar">
+    <input
+      class="search-input"
+      placeholder="搜索素胚名称、规格"
+      value="{{keyword}}"
+      bindinput="onSearchInput"
+      bindconfirm="onSearchConfirm"
+      confirm-type="search"
+    />
+    <button class="search-button" loading="{{loading}}" bindtap="onSearchConfirm">搜索</button>
+  </view>
+
+  <view wx:if="{{errorMessage}}" class="notice error">{{errorMessage}}</view>
+  <view wx:elif="{{loading}}" class="empty">加载中...</view>
+  <view wx:elif="{{items.length === 0}}" class="empty">暂无素胚</view>
+
+  <view wx:else class="list">
+    <view wx:for="{{items}}" wx:key="_id" class="item-card" data-id="{{item._id}}" bindtap="goEdit">
+      <view class="card-head">
+        <view class="title-wrap">
+          <text class="name">{{item.name}}</text>
+          <text class="meta">{{item.spec || '未填写规格'}}</text>
+        </view>
+        <text class="tag {{item.stockStatus === '低库存' ? 'warning' : ''}} {{item.stockStatus === '缺货' ? 'danger' : ''}}">{{item.stockStatus}}</text>
+      </view>
+      <view class="stock-line">
+        <text class="stock-number">{{item.currentStock}}</text>
+        <text class="stock-unit">{{item.unit}}</text>
+        <text class="stock-note">预警 {{item.warningStock}}{{item.unit}}</text>
+      </view>
+      <view class="cost-row">
+        <text>平均成本 {{item.averageCostText}}</text>
+        <text>最近采购 {{item.latestPurchasePriceText}}</text>
+      </view>
+      <view class="card-foot">
+        <text class="muted">{{item.note || '基础资料'}}</text>
+        <text class="delete-link" data-id="{{item._id}}" data-name="{{item.name}}" catchtap="confirmDelete">删除</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>

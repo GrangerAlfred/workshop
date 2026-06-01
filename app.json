@@ -1,13 +1,17 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/customers/index",
+    "pages/customer-edit/index",
+    "pages/inventory/index",
+    "pages/bisque-edit/index",
     "pages/profile/index",
     "pages/logs/logs"
   ],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarBackgroundColor": "#ffffff"
+    "navigationBarTitleText": "陶瓷工坊",
+    "navigationBarBackgroundColor": "#f7f8fa"
   },
   "style": "v2",
   "componentFramework": "glass-easel",

@@ -1,0 +1,38 @@
+<view class="page">
+  <view wx:if="{{loading}}" class="empty">加载中...</view>
+  <view wx:else class="form">
+    <view class="field">
+      <text class="label">素胚名称</text>
+      <input class="input" value="{{form.name}}" data-field="name" bindinput="onFieldInput" placeholder="必填" />
+    </view>
+    <view class="field">
+      <text class="label">规格</text>
+      <input class="input" value="{{form.spec}}" data-field="spec" bindinput="onFieldInput" placeholder="尺寸、型号、容量" />
+    </view>
+    <view class="field">
+      <text class="label">单位</text>
+      <input class="input" value="{{form.unit}}" data-field="unit" bindinput="onFieldInput" />
+    </view>
+    <view class="field">
+      <text class="label">当前库存</text>
+      <input class="input" value="{{form.currentStock}}" data-field="currentStock" bindinput="onFieldInput" type="digit" />
+    </view>
+    <view class="field">
+      <text class="label">库存预警</text>
+      <input class="input" value="{{form.warningStock}}" data-field="warningStock" bindinput="onFieldInput" type="digit" />
+    </view>
+    <view class="field">
+      <text class="label">平均成本</text>
+      <input class="input" value="{{form.averageCostYuan}}" data-field="averageCostYuan" bindinput="onFieldInput" type="digit" placeholder="元" />
+    </view>
+    <view class="field">
+      <text class="label">最近采购价</text>
+      <input class="input" value="{{form.latestPurchasePriceYuan}}" data-field="latestPurchasePriceYuan" bindinput="onFieldInput" type="digit" placeholder="元" />
+    </view>
+    <view class="field textarea-field">
+      <text class="label">备注</text>
+      <textarea class="textarea" value="{{form.note}}" data-field="note" bindinput="onFieldInput" />
+    </view>
+    <button class="save-button" loading="{{saving}}" bindtap="save">保存</button>
+  </view>
+</view>

@@ -1,0 +1,60 @@
+page {
+  min-height: 100vh;
+  background: #f6f7f8;
+}
+
+.page {
+  padding: 24rpx;
+  box-sizing: border-box;
+}
+
+.form,
+.empty {
+  padding: 24rpx;
+  background: #ffffff;
+  border-radius: 8rpx;
+}
+
+.empty {
+  color: #6b7280;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  min-height: 96rpx;
+  border-bottom: 1rpx solid #edf0f2;
+}
+
+.textarea-field {
+  align-items: flex-start;
+  padding: 24rpx 0;
+}
+
+.label {
+  flex: 0 0 200rpx;
+  color: #6b7280;
+  font-size: 28rpx;
+}
+
+.input {
+  flex: 1;
+  min-height: 96rpx;
+  line-height: 96rpx;
+  color: #1f2937;
+  font-size: 30rpx;
+}
+
+.textarea {
+  flex: 1;
+  min-height: 180rpx;
+  color: #1f2937;
+  font-size: 30rpx;
+}
+
+.save-button {
+  margin-top: 32rpx;
+  font-size: 30rpx;
+}

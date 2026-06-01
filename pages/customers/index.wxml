@@ -1,0 +1,58 @@
+<scroll-view class="page" scroll-y>
+  <view class="page-head">
+    <view>
+      <view class="page-title">客户资料</view>
+      <view class="page-subtitle">联系人、欠款和偏好备注集中维护</view>
+    </view>
+    <button class="primary-button" bindtap="goCreate">新增</button>
+  </view>
+
+  <view class="summary">
+    <view class="summary-item">
+      <text class="summary-value">{{summary.total}}</text>
+      <text class="summary-label">客户数</text>
+    </view>
+    <view class="summary-item">
+      <text class="summary-value">{{summary.regularCount}}</text>
+      <text class="summary-label">长期客户</text>
+    </view>
+    <view class="summary-item wide">
+      <text class="summary-value money">{{summary.unpaidAmountText}}</text>
+      <text class="summary-label">未结金额</text>
+    </view>
+  </view>
+
+  <view class="toolbar">
+    <input
+      class="search-input"
+      placeholder="搜索客户、联系人、电话、微信"
+      value="{{keyword}}"
+      bindinput="onSearchInput"
+      bindconfirm="onSearchConfirm"
+      confirm-type="search"
+    />
+    <button class="search-button" loading="{{loading}}" bindtap="onSearchConfirm">搜索</button>
+  </view>
+
+  <view wx:if="{{errorMessage}}" class="notice error">{{errorMessage}}</view>
+  <view wx:elif="{{loading}}" class="empty">加载中...</view>
+  <view wx:elif="{{customers.length === 0}}" class="empty">暂无客户</view>
+
+  <view wx:else class="list">
+    <view wx:for="{{customers}}" wx:key="_id" class="customer-card" data-id="{{item._id}}" bindtap="goEdit">
+      <view class="card-head">
+        <view class="title-wrap">
+          <text class="name">{{item.name}}</text>
+          <text class="meta inline">{{item.contactName || '无联系人'}}</text>
+        </view>
+        <text class="tag">{{item.typeText}}</text>
+      </view>
+      <view class="detail-line">{{item.phone || item.wechat || '无联系方式'}}</view>
+      <view class="detail-line muted">{{item.address || '未填写地址'}}</view>
+      <view class="card-foot">
+        <text class="amount">欠款 {{item.unpaidAmountText}}</text>
+        <text class="delete-link" data-id="{{item._id}}" data-name="{{item.name}}" catchtap="confirmDelete">删除</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>

@@ -1,8 +1,9 @@
 <view class="profile-page">
   <view class="profile-header">
-    <button class="avatar-button" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-      <image class="avatar" src="{{profile.avatarUrl}}"></image>
-    </button>
+    <view class="avatar-wrap">
+      <image class="avatar" src="{{profile.avatarUrl}}" mode="aspectFill"></image>
+      <button class="avatar-button" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar"></button>
+    </view>
     <input
       wx:if="{{canIUseNicknameComp}}"
       type="nickname"

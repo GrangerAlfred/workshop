@@ -1,28 +1,49 @@
-<!--index.wxml-->
-<scroll-view class="scrollarea" scroll-y type="list">
-  <view class="container">
-    <view class="userinfo">
-      <block wx:if="{{canIUseNicknameComp && !hasUserInfo}}">
-        <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
-          <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
-        </button>
-        <view class="nickname-wrapper">
-          <text class="nickname-label">昵称</text>
-          <input type="nickname" class="nickname-input" placeholder="请输入昵称" bind:change="onInputChange" />
-        </view>
-      </block>
-      <block wx:elif="{{!hasUserInfo}}">
-        <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-        <view wx:else> 请使用2.10.4及以上版本基础库 </view>
-      </block>
-      <block wx:else>
-        <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      </block>
-    </view>
-    <view class="usermotto">
-      <text class="user-motto">{{motto}}</text>
+<scroll-view class="page" scroll-y>
+  <view class="hero">
+    <view>
+      <text class="eyebrow">WORKSHOP</text>
+      <view class="title">陶瓷工坊</view>
+      <view class="subtitle">客户、素胚和基础资料先稳稳管起来</view>
     </view>
     <button class="profile-button" bindtap="goProfile">账号</button>
+  </view>
+
+  <view wx:if="{{errorMessage}}" class="notice">{{errorMessage}}</view>
+
+  <view class="stats-grid">
+    <view class="stat-cell">
+      <text class="stat-value">{{stats.customerCount}}</text>
+      <text class="stat-label">客户档案</text>
+    </view>
+    <view class="stat-cell">
+      <text class="stat-value">{{stats.bisqueCount}}</text>
+      <text class="stat-label">素胚种类</text>
+    </view>
+    <view class="stat-cell">
+      <text class="stat-value">{{stats.lowStockCount}}</text>
+      <text class="stat-label">库存提醒</text>
+    </view>
+    <view class="stat-cell wide">
+      <text class="stat-value money">{{stats.unpaidAmountText}}</text>
+      <text class="stat-label">客户欠款</text>
+    </view>
+  </view>
+
+  <view class="section-title">常用入口</view>
+  <view class="actions">
+    <view class="action-card" bindtap="goCustomers">
+      <view class="action-main">
+        <text class="action-title">客户管理</text>
+        <text class="action-desc">联系人、欠款、偏好备注</text>
+      </view>
+      <text class="action-arrow">›</text>
+    </view>
+    <view class="action-card" bindtap="goInventory">
+      <view class="action-main">
+        <text class="action-title">素胚库存</text>
+        <text class="action-desc">规格、库存、成本、预警</text>
+      </view>
+      <text class="action-arrow">›</text>
+    </view>
   </view>
 </scroll-view>

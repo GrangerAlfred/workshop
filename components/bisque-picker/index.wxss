@@ -1,0 +1,19 @@
+.picker {
+  min-height: 80rpx;
+  padding: 0 24rpx;
+  box-sizing: border-box;
+  border: 1rpx solid #dcdfe6;
+  border-radius: 8rpx;
+  background: #ffffff;
+  line-height: 80rpx;
+}
+
+.value {
+  color: #1f2937;
+  font-size: 28rpx;
+}
+
+.placeholder {
+  color: #9ca3af;
+  font-size: 28rpx;
+}
